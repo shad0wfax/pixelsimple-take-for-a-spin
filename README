@@ -1,0 +1,5 @@
+Take For A Spin Repository
+-------------------------------
+This repo contains just a test project that can be used to test / try out the different modules. More like a tester project that can be used to run against the different modules. 
+It is different from unit tests, in the fact that it can be invoked from CLI/Other places as API. It will be a jar that can be used if needed. 
+This will not be bundled with the product. It is more for the developer's testing.
