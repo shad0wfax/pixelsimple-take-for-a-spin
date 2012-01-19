@@ -10,5 +10,9 @@
 	<classpathentry kind="var" path="IVY_HOME/cache/ch.qos.logback/logback-core/jars/logback-core-1.0.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="var" path="IVY_HOME"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/app-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/commons-media-info"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/commons-util"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/transcoder"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
