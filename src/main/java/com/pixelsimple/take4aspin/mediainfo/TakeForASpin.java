@@ -65,7 +65,7 @@ public class TakeForASpin {
 		LOG.debug("transcode::final params::{}", params);
 
 		String filePathWithFileName = params.get("filePathWithFileName");
-		new MediaInspector().readContainerInfo(filePathWithFileName);
+		new MediaInspector().createMediaContainer(filePathWithFileName);
 	}
 
 }

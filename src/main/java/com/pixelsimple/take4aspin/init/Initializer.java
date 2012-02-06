@@ -37,7 +37,12 @@ public class Initializer {
 		}
 		
 		AppInitializer initializer = new AppInitializer();
-		initializer.init(configs);
+		try {
+			initializer.init(configs);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 }

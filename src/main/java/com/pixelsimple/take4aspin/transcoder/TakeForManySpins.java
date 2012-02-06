@@ -11,7 +11,12 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pixelsimple.appcore.RegistryService;
+import com.pixelsimple.appcore.media.Profile;
+import com.pixelsimple.commons.media.Container;
+import com.pixelsimple.commons.media.MediaInspector;
 import com.pixelsimple.take4aspin.init.Initializer;
+import com.pixelsimple.transcoder.TranscoderOutputSpec;
 import com.pixelsimple.transcoder.VideoTranscoder;
 
 /**
@@ -67,22 +72,24 @@ public class TakeForManySpins implements Runnable {
 	}
 	
 	private void transcode(Map<String, String> argParams) {
-		Map<String, String> params = new HashMap<String, String>(8);
-		
-		params.put(VideoTranscoder.INPUT_FILE_PATH_WITH_NAME, argParams.get("inputFilePathWithFileName"));
+		String inputFile = argParams.get("inputFilePathWithFileName");
+		MediaInspector inspector = new MediaInspector();
+		Container inputMedia = inspector.createMediaContainer(inputFile); 
 
 		String outputFileName = argParams.get("outputFilePathWithFileName");
-		
 		outputFileName = outputFileName.substring(0, outputFileName.indexOf(".")) + "_" + "Thread_" + Thread.currentThread().getId() 
 				+ outputFileName.substring(outputFileName.indexOf("."), outputFileName.length());
 		
-		params.put(VideoTranscoder.OUTPUT_FILE_PATH_WITH_NAME, outputFileName);
+		// TODO: In non-test code, this target profile will use a good profile match algorithm
+		Map<String, Profile> profiles = RegistryService.getMediaProfiles();
+		Profile profile = profiles.get("IE_6_7_8_high_bandwidth");
 		
+		TranscoderOutputSpec spec = new TranscoderOutputSpec(profile, outputFileName);
 		
-		LOG.debug("transcode::final params::{}", params);
-		
+		LOG.debug("transcode::Traget profile::{} and output file:: {}", profile,  outputFileName);
+
 		VideoTranscoder videoTranscoder = new VideoTranscoder();
-		videoTranscoder.transcode(params);
+		videoTranscoder.transcode(inputMedia, spec);
 	}
 
 	/* (non-Javadoc)
