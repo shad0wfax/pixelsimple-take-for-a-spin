@@ -10,6 +10,7 @@ import com.pixelsimple.appcore.init.AppInitializer;
 import com.pixelsimple.appcore.init.BootstrapInitializer;
 import com.pixelsimple.commons.util.OSUtils;
 import com.pixelsimple.commons.util.OSUtils.OS;
+import com.pixelsimple.transcoder.init.TranscoderInitializer;
 
 /**
  *
@@ -37,6 +38,9 @@ public class Initializer {
 		}
 		
 		AppInitializer initializer = new AppInitializer();
+
+		// Depends on Transcode initializer
+		initializer.addModuleInitializable(new TranscoderInitializer());
 		try {
 			initializer.init(configs);
 		} catch (Exception e) {

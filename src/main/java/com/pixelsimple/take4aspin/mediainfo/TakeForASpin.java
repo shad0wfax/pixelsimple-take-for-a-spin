@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.pixelsimple.commons.media.MediaInspector;
+import com.pixelsimple.commons.media.exception.MediaException;
 import com.pixelsimple.take4aspin.init.Initializer;
 
 /**
@@ -65,7 +66,14 @@ public class TakeForASpin {
 		LOG.debug("transcode::final params::{}", params);
 
 		String filePathWithFileName = params.get("filePathWithFileName");
-		new MediaInspector().createMediaContainer(filePathWithFileName);
+		try {
+			new MediaInspector().createMediaContainer(filePathWithFileName);
+		} catch (MediaException e) {
+			// TODO Auto-generated catch block
+			LOG.error("{}", e);
+			LOG.debug("Invalid media input file {}", filePathWithFileName);
+			System.exit(0);
+		}
 	}
 
 }
