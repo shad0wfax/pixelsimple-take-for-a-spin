@@ -16,7 +16,8 @@ import com.pixelsimple.commons.media.MediaInspector;
 import com.pixelsimple.commons.media.exception.MediaException;
 import com.pixelsimple.take4aspin.init.Initializer;
 import com.pixelsimple.transcoder.TranscoderOutputSpec;
-import com.pixelsimple.transcoder.VideoTranscoder;
+import com.pixelsimple.transcoder.Transcoder;
+import com.pixelsimple.transcoder.exception.TranscoderException;
 import com.pixelsimple.transcoder.profile.Profile;
 
 /**
@@ -94,8 +95,13 @@ public class TakeForASpin {
 		
 		LOG.debug("transcode::Traget profile::{} and output file:: {}", profile,  argParams.get("outputFilePathWithFileName"));
 		
-		VideoTranscoder videoTranscoder = new VideoTranscoder();
-		videoTranscoder.transcode(inputMedia, spec);
+		Transcoder transcoder = new Transcoder();
+		try {
+			transcoder.transcode(inputMedia, spec);
+		} catch (TranscoderException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
