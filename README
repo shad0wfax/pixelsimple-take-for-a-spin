@@ -3,3 +3,29 @@ Take For A Spin Repository
 This repo contains just a test project that can be used to test / try out the different modules. More like a tester project that can be used to run against the different modules. 
 It is different from unit tests, in the fact that it can be invoked from CLI/Other places as API. It will be a jar that can be used if needed. 
 This will not be bundled with the product. It is more for the developer's testing.
+
+--------------------------
+USAGE:
+--------------------------
+
+-----------------
+Call transcoder -
+-----------------
+WINDOWS:
+
+C:\dev\pixelsimple\jdk\32_bit\jdk1.6.0_26\jre\bin\java -classpath Z:\VmShare\Win7x64\workspace\TranscodingCore\take-for-a-spin\target\lib\default\*;Z:\VmShare\Win7x64\workspace\TranscodingCore\take-for-a-spin\target\jars\* com.pixelsimple.take4aspin.transcoder.TakeForASpin inputFilePathWithFileName=C:/Data/video_test/HTTYD_1-021_poor.mov outputFilePath=C:/Data/video_test/transcoded outputFileNameWithoutExtension=HTTYD_1-021_poor_trans profile=IE_6_7_8_high_bandwidth
+
+MAC:
+
+java -classpath /Users/srivatsasharma/VmShare/Win7x64/workspace/TranscodingCore/take-for-a-spin/target/lib/default/*:/Users/srivatsasharma/VmShare/Win7x64/workspace/TranscodingCore/take-for-a-spin/target/jars/* com.pixelsimple.take4aspin.transcoder.TakeForASpin inputFilePathWithFileName=~/Downloads/ffmpeg/HTTYD_1-021_iPodTouch.mp4 outputFilePath=~/Downloads/ffmpeg/transcoded outputFileNameWithoutExtension=HTTYD_1-021_poor_trans profile=IE_6_7_8_high_bandwidth 
+
+-----------------
+Media Info -
+-----------------
+WINDOWS:
+
+C:\dev\pixelsimple\jdk\32_bit\jdk1.6.0_26\jre\bin\java -classpath Z:\VmShare\Win7x64\workspace\TranscodingCore\take-for-a-spin\target\lib\default\*;Z:\VmShare\Win7x64\workspace\TranscodingCore\take-for-a-spin\target\jars\* com.pixelsimple.take4aspin.mediainfo.TakeForASpin filePathWithFileName=C:\Data\video_test\HTTYD_1-024.mkv  
+
+MAC:
+
+java -classpath /Users/srivatsasharma/VmShare/Win7x64/workspace/TranscodingCore/take-for-a-spin/target/lib/default/*:/Users/srivatsasharma/VmShare/Win7x64/workspace/TranscodingCore/take-for-a-spin/target/jars/* com.pixelsimple.take4aspin.mediainfo.TakeForASpin filePathWithFileName=~/Downloads/ffmpeg/HTTYD_1-021_iPodTouch.mp4  
