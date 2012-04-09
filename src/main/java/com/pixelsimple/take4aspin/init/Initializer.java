@@ -9,7 +9,6 @@ import java.util.Map;
 import com.pixelsimple.appcore.init.AppInitializer;
 import com.pixelsimple.appcore.init.BootstrapInitializer;
 import com.pixelsimple.commons.util.OSUtils;
-import com.pixelsimple.commons.util.OSUtils.OS;
 import com.pixelsimple.transcoder.init.TranscoderInitializer;
 
 /**
@@ -23,12 +22,12 @@ public class Initializer {
 		
 		Map<String, String> configs = new HashMap<String, String>();
 		
-		if (OSUtils.CURRENT_OS == OS.WINDOWS) {
+		if (OSUtils.isWindows()) {
 			// Keep this path up to date with ffmpeg updates
 			configs.put(BootstrapInitializer.JAVA_SYS_ARG_APP_HOME_DIR, "c:/dev/pixelsimple");
 			configs.put("ffprobePath", "c:/dev/pixelsimple/ffprobe/32_bit/0.8/ffprobe.exe"); 
 			configs.put("ffmpegPath", "c:/dev/pixelsimple/ffmpeg/32_bit/0.8/ffmpeg.exe"); 
-		} else if (OSUtils.CURRENT_OS == OS.MAC) {
+		} else if (OSUtils.isMac()) {
 			// Keep this path up to date with ffmpeg updates
 			configs.put(BootstrapInitializer.JAVA_SYS_ARG_APP_HOME_DIR,  OSUtils.USER_SYSTEM_HOME_DIR + "/dev/pixelsimple");
 			configs.put("ffprobePath",  OSUtils.USER_SYSTEM_HOME_DIR + "/dev/pixelsimple/ffprobe/32_bit/0.7_beta2/ffprobe"); 
