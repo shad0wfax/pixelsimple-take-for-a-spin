@@ -88,8 +88,7 @@ public class TakeForASpin {
 		
 		// TODO: In non-test code, this target profile will use a good profile match algorithm
 		GenericRegistryEntry entry =  RegistryService.getGenericRegistryEntry();
-		@SuppressWarnings("unchecked")
-		Map<String, Profile> profiles = (Map<String, Profile>) entry.getEntry(TranscoderRegistryKeys.MEDIA_PROFILES);
+		Map<String, Profile> profiles = entry.getEntry(TranscoderRegistryKeys.MEDIA_PROFILES);
 		
 		Profile profile = profiles.get(profileToUse);
 		
