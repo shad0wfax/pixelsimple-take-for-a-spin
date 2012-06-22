@@ -11,6 +11,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pixelsimple.appcore.Resource;
+import com.pixelsimple.appcore.Resource.RESOURCE_TYPE;
 import com.pixelsimple.commons.media.MediaInspector;
 import com.pixelsimple.commons.media.exception.MediaException;
 import com.pixelsimple.take4aspin.init.Initializer;
@@ -72,7 +74,7 @@ public class TakeForManySpins implements Runnable {
 
 		String filePathWithFileName = params.get("filePathWithFileName");
 		try {
-			new MediaInspector().createMediaContainer(filePathWithFileName);
+			new MediaInspector().createMediaContainer(new Resource(filePathWithFileName, RESOURCE_TYPE.FILE));
 		} catch (MediaException e) {
 			// TODO Auto-generated catch block
 			LOG.error("{}", e);

@@ -9,6 +9,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.pixelsimple.appcore.Resource;
+import com.pixelsimple.appcore.Resource.RESOURCE_TYPE;
 import com.pixelsimple.appcore.registry.GenericRegistryEntry;
 import com.pixelsimple.appcore.registry.RegistryService;
 import com.pixelsimple.commons.media.Container;
@@ -78,7 +80,7 @@ public class TakeForASpin {
 		MediaInspector inspector = new MediaInspector();
 		Container inputMedia = null;
 		try {
-			inputMedia = inspector.createMediaContainer(inputFile);
+			inputMedia = inspector.createMediaContainer(new Resource(inputFile, RESOURCE_TYPE.FILE));
 		} catch (MediaException e) {
 			// TODO Auto-generated catch block
 			LOG.error("{}", e);
@@ -91,8 +93,9 @@ public class TakeForASpin {
 		Map<String, Profile> profiles = entry.getEntry(TranscoderRegistryKeys.MEDIA_PROFILES);
 		
 		Profile profile = profiles.get(profileToUse);
+		Resource outDir = new Resource(argParams.get("outputFilePath"), RESOURCE_TYPE.DIRECTORY);
 		
-		TranscoderOutputSpec spec = new TranscoderOutputSpec(profile, argParams.get("outputFilePath"), argParams.get("outputFileNameWithoutExtension"));
+		TranscoderOutputSpec spec = new TranscoderOutputSpec(profile, outDir, argParams.get("outputFileNameWithoutExtension"));
 		
 		LOG.debug("transcode::Traget profile::{} and output file:: {}", profile,  argParams.get("outputFilePathWithFileName"));
 		
